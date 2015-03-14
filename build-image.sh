@@ -3,10 +3,10 @@
 
 ### settings
 arch=i386
-suite=jessie
-chroot_dir='/var/chroot/jessie'
+suite=wheezy
+chroot_dir='/var/chroot/wheezy'
 apt_mirror='http://http.debian.net/debian'
-docker_image='32bit/debian:jessie'
+docker_image='tubia/debian:wheezy'
 
 ### make sure that the required tools are installed
 apt-get install -y docker.io debootstrap dchroot
@@ -17,9 +17,9 @@ debootstrap --arch $arch $suite $chroot_dir $apt_mirror
 
 ### update the list of package sources
 cat <<EOF > $chroot_dir/etc/apt/sources.list
-deb $apt_mirror jessie main contrib non-free
-deb $apt_mirror jessie-updates main contrib non-free
-deb http://security.debian.org/ jessie/updates main contrib non-free
+deb $apt_mirror wheezy main contrib non-free
+deb $apt_mirror wheezy-updates main contrib non-free
+deb http://security.debian.org/ wheezy/updates main contrib non-free
 EOF
 
 ### cleanup
